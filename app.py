@@ -39,7 +39,7 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(chunk_size=
 doc_splits = text_splitter.split_documents(docs_list)
 
 # Create Embeddings and VectorStore
-embed_model = FastEmbedEmbeddings(model_name="intfloat/multilingual-e5-large")
+embed_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5")
 vectorstore = Chroma.from_documents(doc_splits, embed_model, collection_name="local-rag")
 retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
